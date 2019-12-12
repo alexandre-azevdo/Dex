@@ -1,0 +1,35 @@
+<template>
+  <div id="dex-search-form">
+    <form @submit.prevent="handleSubmit">
+      <label>Search</label>
+      <input type="text" 
+              v-model="name"
+      >
+      <button>Submit</button>
+    </form>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'dex-search-form',
+    data() {
+      return {
+        name: '',
+      }
+    },
+
+    methods: {
+      handleSubmit() {
+        this.$emit('search:object', this.name)
+      },
+    }
+  }
+
+</script>
+
+<style scoped>
+  form {
+    margin-bottom: 2rem;
+  }
+</style>
