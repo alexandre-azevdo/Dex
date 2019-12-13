@@ -138,11 +138,15 @@
     background-color: rgba(255, 255, 40, 0.8);
   }
 
+  .dex-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   .dex-block, .dex-block-favorite {
     padding: 5px;
     margin: 5px;
     border: 5px solid #ccc;
-    float: left;
   }
 
   .dex-block:hover, .dex-block-favorite:hover {
