@@ -3,21 +3,14 @@
     id="app"
     class="small-container"
   >
-      <aside> 
-      Side Content
-    </aside>
-    <div id="rightSideWrapper">
-    <header>
+  <header>
       <h1>Pokedex</h1>
       <dex-search-form @search:object="searchObject" />
     </header>
 
-    <div id="content">
       <section>
-          <dex-list :objects="filtered"/>
-        </section>
-    </div>
-  </div>
+        <dex-list :objects="filtered"/>
+      </section>
   </div>
 </template>
 
@@ -97,17 +90,6 @@
     border-radius: 3px;
   }
 
-  header {
-      position: fixed;
-  width: 70%; 
-  height: 100px; /*Adjust the hight to your purposes*/
-  
-  /*Aesthetics*/
-  background: lightSalmon;
-  border-radius: 7px;
-  z-index: 1;
-  }
-
  aside {
   position:fixed; 
   height: 100%;
@@ -148,12 +130,6 @@
     margin: 5px;
   }
 
-  #content {
-  margin-top: 100px; /*The height of the   header*/
-  display:flex;
-  flex-flow: row wrap;
-  }
-
   .dex-block {
     background-color: rgba(255, 120, 40, 0.8);
   }
@@ -188,12 +164,6 @@
     text-align: center;
   }
 
-  #rightSideWrapper {
-  /*Strictly Necessary */
-  width:70%; 
-  float: right;
-}
-
   .dex-subtitle {
     width: 100%;
     height: 20%;
@@ -202,14 +172,6 @@
     background-color: rgba(0, 0, 0, 0.5);
     text-align: center;
   }
-
-  section {
-  /*Strictly Necessary */
-   height: 400px;
-   order: 1;
-   flex: 0 1 100%;
-  }
-
 
   footer {
     margin-top: 50px;
