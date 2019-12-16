@@ -31,10 +31,6 @@
 
     methods: {
 
-      image(index, isFavorite) {
-        return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + (isFavorite ? "shiny/" : "") + index + ".png"
-      },
-
       getObjects() {
         this.$store.dispatch('load')
     },

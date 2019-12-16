@@ -9,7 +9,7 @@
 
 <script>
 import DexBlock from '@/components/DexBlock.vue'
-import { mapState } from 'vuex'
+// import { mapState } from 'vuex'
 
   export default {
     name: 'dex-list',
@@ -17,9 +17,14 @@ import { mapState } from 'vuex'
       DexBlock,
     },
 
-    computed: mapState({
-      objects: state => state.filtered,
-    })
+    computed: {
+      objects() {
+        return this.$store.getters.filtered
+      }
+    }
+    //mapState({
+    //   objects: state => state.filtered,
+    // })
   }
 </script>
 

@@ -3,9 +3,7 @@
 	<div v-bind:class="object.isFavorite ? 'dex-block-favorite' : 'dex-block'">
 		<div class="dex-index">{{ object.index }}</div>
 		<button 
-		v-on:click="toggleFavorite(object.index);
-					object.isFavorite = isFavorite(object.index);
-					" 
+		v-on:click="onClick(object.index)"
 		class = dex-favorite-button> 
 			{{ object.isFavorite ? "★" : "☆" }}
 		</button>
@@ -22,6 +20,12 @@
 
     props: {
 		object: Object,
+    },
+
+    methods: {
+		onClick(index) {
+			this.$store.dispatch('toggleFavorite', index)
+		}
     }
   }
 </script>
