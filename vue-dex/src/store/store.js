@@ -23,7 +23,7 @@ export const store = new Vuex.Store ({
       state.regex = regex
     },
 
-    toggleFavorite(state, index) {
+    updateFavorite(state, index) {
       var objectIndex = state.objects.findIndex(x => x.index == index)
       state.objects[objectIndex].isFavorite = !state.objects[objectIndex].isFavorite
     }
@@ -37,8 +37,6 @@ export const store = new Vuex.Store ({
         }
 
         let exp = new RegExp(state.regex)
-        alert('Filtered')
-        alert(state.objects) 
 
         return state.objects.filter(function(item) {
           return exp.test(item.name.toLowerCase())
@@ -50,7 +48,7 @@ export const store = new Vuex.Store ({
 
     toggleFavorite({ commit }, index) {
       Util.toggleFavorite(index)
-      commit('toggleFavorite', index)
+      commit('updateFavorite', index)
     },
 
     async load({ commit }) {
