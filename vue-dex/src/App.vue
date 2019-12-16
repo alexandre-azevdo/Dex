@@ -9,7 +9,7 @@
     </header>
 
       <section>
-        <dex-list :objects="filtered"/>
+        <dex-list />
       </section>
   </div>
 </template>
@@ -25,27 +25,6 @@
       DexSearchForm,
     },
 
-    data() {
-      return {
-        objects: [],
-        regex: "",
-      }
-    },
-
-    computed: {
-      filtered() {
-        if (this.regex == "") {
-          return this.objects
-        }
-
-        let exp = new RegExp(this.regex)
-
-        return this.objects.filter(function(item) {
-          return exp.test(item.name.toLowerCase())
-        }) 
-      }
-    },
-
     mounted() {
       this.getObjects()
     },
@@ -56,21 +35,8 @@
         return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + (isFavorite ? "shiny/" : "") + index + ".png"
       },
 
-      async getObjects() {
-        const response = await this.axios.get('https://pokeapi.co/api/v2/pokemon-species/?limit=151');
-        let results = (response.data.results);
-        let objects = results.map( (object, index) => {
-          const isFavorite = this.isFavorite(index+1)
-          return {
-              index: index + 1,
-              isFavorite: isFavorite,
-              name: this.capitalizeFirstLetter(object["name"]),
-              imageUrl: this.image(index+1, false),
-              favoriteImageUrl: this.image(index+1, true)
-            }
-        });
-
-        this.objects = objects
+      getObjects() {
+        this.$store.dispatch('load')
     },
 
       searchObject(name) {
@@ -89,17 +55,6 @@
     padding: 0px;
     border-radius: 3px;
   }
-
- aside {
-  position:fixed; 
-  height: 100%;
-  width:30%;
-  margin: 0px;  
-
-  /*Aesthetics*/
-  background: lightblue; 
-  border-radius: 7px;
-}
 
   section#main {
     font-family: sans-serif;
@@ -139,6 +94,8 @@
   }
 
   .dex-list {
+    margin: 0 auto;
+    padding: 20px;
     display: flex;
     flex-wrap: wrap;
   }

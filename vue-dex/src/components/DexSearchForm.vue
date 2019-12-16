@@ -21,7 +21,7 @@
 
     methods: {
       handleSubmit() {
-        this.$emit('search:object', this.name)
+        this.$store.commit('updateSearch', this.name)
       },
     }
   }

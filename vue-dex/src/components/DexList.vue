@@ -9,15 +9,17 @@
 
 <script>
 import DexBlock from '@/components/DexBlock.vue'
+import { mapState } from 'vuex'
+
   export default {
     name: 'dex-list',
     components: {
       DexBlock,
     },
 
-    props: {
-		objects: Array,
-    }
+    computed: mapState({
+      objects: state => state.filtered,
+    })
   }
 </script>
 
