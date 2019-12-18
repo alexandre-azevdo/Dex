@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import { Util } from './util.js' 
+import { Util } from './util.js'
+import { API } from './api.js'  
 
 Vue.use(Vuex)
 Vue.use(VueAxios, axios)
@@ -11,7 +12,8 @@ export const store = new Vuex.Store ({
 
   state: {
     objects: [],
-    regex: ""
+    regex: "",
+    page: 0
   },
 
   mutations: {
@@ -26,6 +28,14 @@ export const store = new Vuex.Store ({
     updateFavorite(state, index) {
       var objectIndex = state.objects.findIndex(x => x.index == index)
       state.objects[objectIndex].isFavorite = !state.objects[objectIndex].isFavorite
+    },
+
+    nextPage(state) {
+      state.page++
+    },
+
+    previousPage(state) {
+      state.page--
     }
   },
 
@@ -46,26 +56,23 @@ export const store = new Vuex.Store ({
 
   actions: {
 
+    nextPage({ commit, dispatch }) {
+      commit('nextPage')
+      dispatch('load')
+    },
+
+    previousPage({ commit, dispatch }) {
+      commit('previousPage')
+      dispatch('load')
+    },
+
     toggleFavorite({ commit }, index) {
       Util.toggleFavorite(index)
       commit('updateFavorite', index)
     },
 
-    async load({ commit }) {
-
-        const response = await axios.get('https://pokeapi.co/api/v2/pokemon-species/?limit=151');
-        let results = (response.data.results);
-        let objects = results.map( (object, index) => {
-          const isFavorite = Util.isFavorite(index+1)
-          return {
-              index: index + 1,
-              isFavorite: isFavorite,
-              name: Util.capitalizeFirstLetter(object["name"]),
-              imageUrl: Util.image(index+1, false),
-              favoriteImageUrl: Util.image(index+1, true)
-            }
-        });
-        commit('update', objects)
+    async load({ state, commit }) {
+        API.getObjects(state.page).then(objects => { commit('update', objects) })
     }
   }
 })

@@ -5,24 +5,32 @@
   >
   <header>
       <h1>Pokedex</h1>
-      <dex-search-form @search:object="searchObject" />
+      <dex-search-form />
+      <page-setter />
     </header>
 
       <section>
         <dex-list />
       </section>
+
+      <footer>
+        <page-setter />
+      </footer>
+
   </div>
 </template>
 
 <script>
   import DexList from '@/components/DexList.vue'
   import DexSearchForm from '@/components/DexSearchForm.vue'
+  import PageSetter from '@/components/PageSetter.vue'
 
   export default {
     name: 'app',
     components: {
       DexList,
       DexSearchForm,
+      PageSetter
     },
 
     mounted() {
@@ -30,13 +38,8 @@
     },
 
     methods: {
-
       getObjects() {
         this.$store.dispatch('load')
-    },
-
-      searchObject(name) {
-        this.regex = name.trim().toLowerCase()
       }
     },
   }
@@ -97,6 +100,8 @@
   }
 
   .dex-block, .dex-block-favorite {
+    min-width: 200px;
+    max-width: 400px;
     padding: 5px;
     margin: 5px;
     border: 5px solid #ccc;
@@ -127,6 +132,11 @@
     position: relative;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+
+  .page-setter {
+    background-color: rgba(255, 255, 40, 0.8);
     text-align: center;
   }
 

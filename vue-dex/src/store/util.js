@@ -23,7 +23,7 @@ export const Util = {
 		} else {
 			localStorage.favorites = JSON.stringify(
 													{
-															favoriteList: [index],
+														favoriteList: [index],
 													}
 			)
 		}

@@ -22,9 +22,6 @@ import DexBlock from '@/components/DexBlock.vue'
         return this.$store.getters.filtered
       }
     }
-    //mapState({
-    //   objects: state => state.filtered,
-    // })
   }
 </script>
 
