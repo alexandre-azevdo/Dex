@@ -13,7 +13,8 @@ export const store = new Vuex.Store ({
   state: {
     objects: [],
     regex: "",
-    page: 0
+    page: 0,
+    detail: undefined
   },
 
   mutations: {
@@ -28,6 +29,13 @@ export const store = new Vuex.Store ({
     updateFavorite(state, index) {
       var objectIndex = state.objects.findIndex(x => x.index == index)
       state.objects[objectIndex].isFavorite = !state.objects[objectIndex].isFavorite
+      
+      if (state.detail != undefined && state.detail.index == index)
+        state.detail.isFavorite = Util.isFavorite(index)
+    },
+
+    updateDetail(state, detail) {
+      state.detail = detail
     },
 
     nextPage(state) {
@@ -69,6 +77,10 @@ export const store = new Vuex.Store ({
     toggleFavorite({ commit }, index) {
       Util.toggleFavorite(index)
       commit('updateFavorite', index)
+    },
+
+    async loadDetail({commit}, index) {
+      API.getDetail(index).then(detail => { commit('updateDetail', detail) })
     },
 
     async load({ state, commit }) {

@@ -24,7 +24,7 @@
 			},
 
 			hasNext() {
-				return this.page < 3
+				return this.page < 2
 			},
 
 			hasPrevious() {
@@ -43,3 +43,20 @@
 		}
 	}
 </script>
+
+<style>
+	.page-setter {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 5em;
+		background-color: rgba(255, 255, 40, 0.8);
+		text-align: center;
+	}
+
+	.page-setter button {
+		height: 3em;
+		border-radius: 2px;
+		margin: 0 auto;
+	}
+</style>

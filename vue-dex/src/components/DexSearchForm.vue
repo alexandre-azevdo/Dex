@@ -29,7 +29,14 @@
 </script>
 
 <style scoped>
+
   form {
-    margin-bottom: 2rem;
+    font-family: Verdana;
+    margin-bottom: 2em;
   }
+
+  form label {
+    margin: 5px;
+  }
+
 </style>

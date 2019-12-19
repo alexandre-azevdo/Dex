@@ -25,4 +25,16 @@ import DexBlock from '@/components/DexBlock.vue'
   }
 </script>
 
-<style scoped></style>
+<style>
+  
+  .dex-list {
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-between;
+  }
+
+
+</style>
