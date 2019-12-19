@@ -17,16 +17,33 @@ export const API = {
 		const response = await axios.all([axios.get('https://pokeapi.co/api/v2/pokemon/' + index + '/'), 
 										axios.get('https://pokeapi.co/api/v2/pokemon-species/' + index + '/')])
         let results = response.map(response => { return response.data })
+
+        let names = results[1].names.reduce(
+			function(acc, cur) {
+			if(cur.language.name == "en" || cur.language.name == "ja")
+				acc[cur.language.name] = Util.capitalizeFirstLetter(cur.name);
+			return acc;
+		}, {});
+
+		let types = results[0].types.map(type => {
+				return Util.capitalizeFirstLetter(type.type.name)
+		}).reverse()
+
+		let dex = results[1]["flavor_text_entries"].reduce(
+			function(acc, cur) {
+				if((cur.language.name == "en" || cur.language.name == "ja") && !acc.hasOwnProperty(cur.language.name))
+					acc[cur.language.name] = Util.capitalizeFirstLetter(cur["flavor_text"]);
+				return acc;
+		}, {});
+
 		const isFavorite = Util.isFavorite(index)
 		return {
 			index: index,
 			isFavorite: isFavorite,
-			name: Util.capitalizeFirstLetter(results[0]["name"]),
-			types: results[0].types.map(type => {
-				return Util.capitalizeFirstLetter(type.type.name)
-			}).reverse(),
+			names: names,
+			types: types,
 			weight: results[0].weight/10 + "kg",
-			dex: results[1]["flavor_text_entries"][1]["flavor_text"]
+			dex: dex
 		}
 	},
 

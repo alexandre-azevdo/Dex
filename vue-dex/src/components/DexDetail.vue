@@ -1,10 +1,24 @@
 <template>
-	<div id="dex-detail">
+	<div v-if="detail != undefined" id="dex-detail">
+		<div class="detail-name-container">
+			<div class="dex-index">
+				<p> {{ detail.index }} </p>
+			</div>
+			<h2> {{detail.names["en"]}} </h2>
+			<h2> {{detail.names["ja"]}} </h2>
+			<button 
+			v-on:click.stop="onClickFavorite(detail.index)"
+			class = dex-favorite-button> 
+					{{ detail.isFavorite ? "★" : "☆" }}
+			</button>
+		</div>
 		<img v-bind:src="this.image">
-		<p> Type: </p>
-		<p v-if="this.types.length > 0" > {{ types[0] }}</p> 
-		<p v-if="this.types.length > 1"> {{ types[1] }}</p>
-		<p>{{ this.dex }}</p>
+		<div class="detail-type-container">
+			<span> Type: </span>
+			<span class="detail-type" v-for="type in types" :key="type"> {{ type }} </span>
+		</div>
+		<p> {{ detail.dex["en"] }} </p>
+		<p> {{ detail.dex["ja"] }} </p>
 	</div>
 
 </template>
@@ -43,6 +57,12 @@
 
 				return Util.image(this.detail.index, this.detail.isFavorite);
 			}
+		},
+
+		methods: {
+			onClickFavorite(index) {
+				this.$store.dispatch('toggleFavorite', index)
+			}
 		}
 	}
 
@@ -50,11 +70,29 @@
 </script>
 
 <style>
+	.detail-name-container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+
+	.detail-type-container {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+
+	.detail-type {
+		margin: 2em;
+		padding: 2em;
+		background-color: rgba(0, 0, 0, 0.5);
+	}
 	
 	#dex-detail {
 		position: sticky;
 		top: 0;
-		margin: 2em;
+		padding: 2em;
 		font-family: Verdana;
 	}
 
