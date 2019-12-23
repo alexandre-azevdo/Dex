@@ -5,6 +5,7 @@
   >
     <header>
       <div class="header-title">
+        <router-link :to="{ name: 'Shiny' }">Favorites only</router-link>
         <h1>Pokédex</h1>
       </div>
       <dex-search-form />
@@ -15,7 +16,8 @@
         <aside>
           <dex-detail />
         </aside>
-        <dex-list />
+        <router-view></router-view>
+        <!--<dex-list />!-->
       </section>
       <footer>
         <page-setter />
@@ -25,7 +27,7 @@
 </template>
 
 <script>
-  import DexList from '@/components/DexList.vue'
+  //import DexList from '@/components/DexList.vue'
   import DexSearchForm from '@/components/DexSearchForm.vue'
   import PageSetter from '@/components/PageSetter.vue'
   import DexDetail from '@/components/DexDetail.vue'
@@ -34,7 +36,7 @@
   export default {
     name: 'app',
     components: {
-      DexList,
+      //DexList,
       DexSearchForm,
       PageSetter,
       DexDetail

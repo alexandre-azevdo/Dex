@@ -49,6 +49,12 @@ export const store = new Vuex.Store ({
 
   getters: {
 
+    favorites: state => {
+      return state.objects.filter(function(item) {
+          return item.isFavorite
+        })
+    },
+
     filtered: state => {
       if (state.regex == "") {
           return state.objects

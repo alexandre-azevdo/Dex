@@ -17,9 +17,13 @@ import DexBlock from '@/components/DexBlock.vue'
       DexBlock,
     },
 
+    props: {
+      favorites: Boolean,
+    },
+
     computed: {
       objects() {
-        return this.$store.getters.filtered
+        return this.favorites ? this.$store.getters.favorites : this.$store.getters.filtered
       }
     }
   }
