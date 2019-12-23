@@ -30,9 +30,14 @@
 
 <style scoped>
 
+  #dex-search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   form {
     font-family: Verdana;
-    margin-bottom: 2em;
   }
 
   form label {

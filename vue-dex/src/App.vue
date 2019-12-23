@@ -5,10 +5,17 @@
   >
     <header>
       <div class="header-title">
-        <router-link :to="{ name: 'Shiny' }">Favorites only</router-link>
         <h1>Pokédex</h1>
       </div>
-      <dex-search-form />
+      <nav>
+          <div class="nav-link">
+            <router-link :to="{ name: 'Home' }">Home</router-link>
+          </div>
+          <dex-search-form />
+          <div class="nav-link">
+            <router-link :to="{ name: 'Shiny' }">Favorites only</router-link>
+          </div>
+        </nav>
       <page-setter />
     </header>
 
@@ -57,6 +64,43 @@
 
 <style>
 
+  .nav-link a {
+    display: block;
+    margin: 0;
+    text-decoration: none;
+    font-family: Verdana;
+    font-size: 1em;
+    color: black;
+  }
+
+  .nav-link:hover a {
+    color: white;
+  }
+
+  .nav-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    color: black;
+    text-align: center;
+    margin: 0px;
+  }
+
+  .nav-link:hover {
+    background-color: tomato;
+  }
+
+  nav {
+    width: 100%;
+    height: 3em;
+    background-color: white;
+    padding: 0;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+  }
+
   header {
     padding: 0;
     margin: 0;
@@ -80,7 +124,7 @@
     display: flex;
     align-items: flex-end;
     padding: 5px;
-    margin-bottom: 2em;
+    /*margin-bottom: 2em;*/
     height: 9em;
     background-color: tomato;
   }

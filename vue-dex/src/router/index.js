@@ -6,17 +6,17 @@ Vue.use(Router)
 
 export default new Router({
 	routes: [
+			{
+			path: '/',
+			name: 'Home',
+			component: DexList,
+			props: { default: true, favorites: false }
+		},
 		{
 			path: '/shiny',
 			name: 'Shiny',
 			component: DexList,
 			props: { default: true, favorites: true }
 		},
-		{
-			path: '/',
-			name: 'Home',
-			component: DexList,
-			props: { default: true, favorites: false }
-		}
 	]
 })

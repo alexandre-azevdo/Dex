@@ -34,14 +34,9 @@ import DexBlock from '@/components/DexBlock.vue'
   .dex-list {
     display: grid;
     grid-gap: 30px;
-    justify-content: center;
+    grid-row-gap: 30px;
     grid-template-columns: repeat(auto-fit, minmax(200px, auto));
-    /*margin: 0 auto;*/
-    padding: 20px;
-/*    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    justify-content: space-between;*/
+    padding: 50px;
   }
 
 
