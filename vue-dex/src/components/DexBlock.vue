@@ -48,7 +48,7 @@
 	.dex-block, .dex-block-favorite {
 		display: grid;
 		grid-gap: 10px;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 5fr 1fr;
 		align-content: space-around;
 		justify-content: space-between;
 		font-family: Verdana;
