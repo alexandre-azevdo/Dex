@@ -86,7 +86,7 @@
 	.detail-type {
 		margin: 2em;
 		padding: 2em;
-		background-color: rgba(0, 0, 0, 0.5);
+		background-color: rgba(0, 0, 0, 0.3);
 	}
 	
 	#dex-detail {
@@ -99,8 +99,8 @@
 	#dex-detail img {
 		margin: 5em;
 		background-color: white;
-		border-width: 50px;
-		border-color: gray;
+		border: 5px solid;
+		border-color: rgba(0, 0, 0, 0.3);
 		width: 70%;
 	}
 </style>

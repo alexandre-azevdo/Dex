@@ -3,13 +3,13 @@
 		<button 
 			v-if="hasPrevious"
 			v-on:click="previousPage()"> 
-			Página anterior
+			&lt;&lt; Página anterior
 		</button>
 
 		<button 
 			v-if="hasNext"
 			v-on:click="nextPage()">
-			Próxima página
+			Próxima página >>
 		</button>
 	</div>
 </template>
@@ -55,8 +55,11 @@
 	}
 
 	.page-setter button {
+		border: none;
+		background-color: rgba(255, 120, 40, 0.8);
+		width: 10%;
 		height: 3em;
-		border-radius: 2px;
+		border-radius: 8px;
 		margin: 0 auto;
 	}
 </style>

@@ -28,12 +28,16 @@ import DexBlock from '@/components/DexBlock.vue'
 <style>
   
   .dex-list {
-    margin: 0 auto;
+    display: grid;
+    grid-gap: 30px;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+    /*margin: 0 auto;*/
     padding: 20px;
-    display: flex;
+/*    display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
-    justify-content: space-between;
+    justify-content: space-between;*/
   }
 
 

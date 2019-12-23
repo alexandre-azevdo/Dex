@@ -46,6 +46,11 @@
 	}
 
 	.dex-block, .dex-block-favorite {
+		display: grid;
+		grid-gap: 10px;
+		grid-template-columns: 1fr 1fr;
+		align-content: space-around;
+		justify-content: space-between;
 		font-family: Verdana;
 		min-width: 200px;
 		max-width: 400px;
@@ -55,7 +60,6 @@
 	}
 
 	.dex-favorite-button {
-		float: right;
 		width: 40px;
 		height: 40px;
 		padding: 0px;
@@ -71,6 +75,7 @@
 	}
 
 	.dex-image {
+		grid-column: 1 / span 2;
 		width: 96px;
 		height: 96px;
 		display: block;
@@ -79,20 +84,15 @@
 	}
 
 	.dex-index {
-		float: left;
-		position: relative;
 		width: 50px;
 		padding: 8px;
-		background-color: rgba(0, 0, 0, 0.5);
+		background-color: rgba(0, 0, 0, 0.3);
 		text-align: center;
 	}
 
 	.dex-subtitle {
-		width: 100%;
-		height: 20%;
-		position: relative;
-		bottom: 0;
-		background-color: rgba(0, 0, 0, 0.5);
+		grid-column: 1 / span 2;
+		background-color: rgba(0, 0, 0, 0.3);
 		text-align: center;
 	}
 

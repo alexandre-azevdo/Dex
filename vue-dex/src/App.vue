@@ -84,6 +84,7 @@
   }
 
   .header-title h1 {
+    font-size: 5em;
     padding: 0;
     margin: 0;
     font-family: Verdana;
