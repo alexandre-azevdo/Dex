@@ -9,16 +9,36 @@
 
 <script>
 import DexBlock from '@/components/DexBlock.vue'
+// import { mapState } from 'vuex'
+
   export default {
     name: 'dex-list',
     components: {
       DexBlock,
     },
 
-    props: {
-		objects: Array,
+    computed: {
+      objects() {
+        return this.$store.getters.filtered
+      }
     }
   }
 </script>
 
-<style scoped></style>
+<style>
+  
+  .dex-list {
+    display: grid;
+    grid-gap: 30px;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+    /*margin: 0 auto;*/
+    padding: 20px;
+/*    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-between;*/
+  }
+
+
+</style>
