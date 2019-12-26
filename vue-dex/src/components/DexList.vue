@@ -1,15 +1,21 @@
 <template>
 
 	<div class="dex-list">
-		<div v-for="object in objects" :key="object.index">
-			<dex-block :object="object" />
+    <div v-if="this.filterTrimmed.length > 0" class="dex-list-header">
+      <button v-on:click="back()"> Back </button>
+      <h1> Search for {{ this.filterTrimmed }} </h1>
+    </div>
+
+    <div class="dex-list-list">
+      <div v-for="object in objects" :key="object.index">
+        <dex-block :object="object" />
+      </div>
 		</div>
 	</div>
 </template>
 
 <script>
 import DexBlock from '@/components/DexBlock.vue'
-// import { mapState } from 'vuex'
 
   export default {
     name: 'dex-list',
@@ -17,27 +23,49 @@ import DexBlock from '@/components/DexBlock.vue'
       DexBlock,
     },
 
+    props: {
+      favorites: Boolean,
+      filter: String
+    },
+
     computed: {
       objects() {
-        return this.$store.getters.filtered
+        return this.favorites ? this.$store.getters.favorites : this.$store.getters.filtered(this.filter)
+      },
+
+      filterTrimmed() {
+        return this.filter ? this.filter.trim() : ''
+      }
+    },
+
+    methods: {
+      back() {
+        this.$router.push({name: 'Home'})
       }
     }
   }
 </script>
 
-<style>
+<style scoped>
+
+  button {
+    width: 5em;
+  }
+
+  .dex-list-header {
+    margin: 50px;
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+    font-family: Verdana;
+    text-align: center;
+  }
   
-  .dex-list {
+  .dex-list-list {
     display: grid;
     grid-gap: 30px;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
-    /*margin: 0 auto;*/
-    padding: 20px;
-/*    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    justify-content: space-between;*/
+    grid-row-gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, auto));
+    padding: 50px;
   }
 
 

@@ -7,7 +7,7 @@
       <div class="header-title">
         <h1>Pokédex</h1>
       </div>
-      <dex-search-form />
+      <nav-bar />
       <page-setter />
     </header>
 
@@ -15,7 +15,7 @@
         <aside>
           <dex-detail />
         </aside>
-        <dex-list />
+        <router-view></router-view>
       </section>
       <footer>
         <page-setter />
@@ -25,17 +25,15 @@
 </template>
 
 <script>
-  import DexList from '@/components/DexList.vue'
-  import DexSearchForm from '@/components/DexSearchForm.vue'
   import PageSetter from '@/components/PageSetter.vue'
   import DexDetail from '@/components/DexDetail.vue'
+  import NavBar from '@/components/NavBar.vue'
 
 
   export default {
     name: 'app',
     components: {
-      DexList,
-      DexSearchForm,
+      NavBar,
       PageSetter,
       DexDetail
     },
@@ -78,7 +76,6 @@
     display: flex;
     align-items: flex-end;
     padding: 5px;
-    margin-bottom: 2em;
     height: 9em;
     background-color: tomato;
   }

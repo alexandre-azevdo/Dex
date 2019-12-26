@@ -21,7 +21,7 @@
 
     methods: {
       handleSubmit() {
-        this.$store.commit('updateSearch', this.name)
+        this.$router.push({ name: 'Search', query: { q: this.name }})
       },
     }
   }
@@ -30,9 +30,14 @@
 
 <style scoped>
 
+  #dex-search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   form {
     font-family: Verdana;
-    margin-bottom: 2em;
   }
 
   form label {

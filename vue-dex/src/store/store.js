@@ -12,7 +12,6 @@ export const store = new Vuex.Store ({
 
   state: {
     objects: [],
-    regex: "",
     page: 0,
     detail: undefined
   },
@@ -20,10 +19,6 @@ export const store = new Vuex.Store ({
   mutations: {
     update(state, objects) {
       state.objects = objects
-    },
-
-    updateSearch(state, regex) {
-      state.regex = regex
     },
 
     updateFavorite(state, index) {
@@ -49,12 +44,18 @@ export const store = new Vuex.Store ({
 
   getters: {
 
-    filtered: state => {
-      if (state.regex == "") {
+    favorites: state => {
+      return state.objects.filter(function(item) {
+          return item.isFavorite
+        })
+    },
+
+    filtered: state => regex => {
+      if (!regex || regex == "") {
           return state.objects
         }
 
-        let exp = new RegExp(state.regex)
+        let exp = new RegExp(regex.trim())
 
         return state.objects.filter(function(item) {
           return exp.test(item.name.toLowerCase())
@@ -85,6 +86,6 @@ export const store = new Vuex.Store ({
 
     async load({ state, commit }) {
         API.getObjects(state.page).then(objects => { commit('update', objects) })
-    }
+    },
   }
 })

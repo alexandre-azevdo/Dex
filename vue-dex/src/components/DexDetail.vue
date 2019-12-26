@@ -17,6 +17,8 @@
 			<span> Type: </span>
 			<span class="detail-type" v-for="type in types" :key="type"> {{ type }} </span>
 		</div>
+		<p>Height: {{detail.height}}</p>
+		<p>Weight: {{detail.weight}}</p>
 		<p> {{ detail.dex["en"] }} </p>
 		<p> {{ detail.dex["ja"] }} </p>
 	</div>

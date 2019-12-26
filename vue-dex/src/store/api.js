@@ -9,6 +9,7 @@ export const API = {
 			{limit: 151, offset: 0}, 
 			{limit: 100, offset: 151}, 
 			{limit: 135, offset: 251},
+			{limit: 107, offset: 386}
 		]
 	},
 	
@@ -42,7 +43,8 @@ export const API = {
 			isFavorite: isFavorite,
 			names: names,
 			types: types,
-			weight: results[0].weight/10 + "kg",
+			height: results[0].height/10 + " m",
+			weight: results[0].weight/10 + " kg",
 			dex: dex
 		}
 	},
