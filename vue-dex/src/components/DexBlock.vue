@@ -52,8 +52,7 @@
 		align-content: space-around;
 		justify-content: space-between;
 		font-family: Verdana;
-		min-width: 200px;
-		max-width: 400px;
+		width: 200px;
 		padding: 5px;
 		margin: 5px;
 		border: 5px solid #ccc;

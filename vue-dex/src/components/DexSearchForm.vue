@@ -21,7 +21,7 @@
 
     methods: {
       handleSubmit() {
-        this.$store.commit('updateSearch', this.name)
+        this.$router.push({ name: 'Search', query: { q: this.name }})
       },
     }
   }

@@ -1,20 +1,22 @@
 <template>
 	<div class = "page-setter">
-		<button 
-			v-if="hasPrevious"
+		<button :class="[hasPrevious ? '' : 'hidden']"
 			v-on:click="previousPage()"> 
-			&lt;&lt; Página anterior
+			&lt;&lt; Previous
 		</button>
 
 		<button 
-			v-if="hasNext"
+			:class="[hasNext ? '': 'hidden']"
 			v-on:click="nextPage()">
-			Próxima página >>
+			Next >>
 		</button>
 	</div>
 </template>
 
 <script>
+
+	import { API } from '../store/api.js' 
+
 	export default {
 		name: 'page-setter',
 		computed: {
@@ -24,7 +26,7 @@
 			},
 
 			hasNext() {
-				return this.page < 2
+				return this.page < API.fetchData.data.length
 			},
 
 			hasPrevious() {
@@ -44,7 +46,8 @@
 	}
 </script>
 
-<style>
+<style scoped>
+
 	.page-setter {
 		display: flex;
 		align-items: center;
@@ -54,12 +57,16 @@
 		text-align: center;
 	}
 
-	.page-setter button {
+	button {
 		border: none;
 		background-color: rgba(255, 120, 40, 0.8);
 		width: 10%;
 		height: 3em;
 		border-radius: 8px;
 		margin: 0 auto;
+	}
+
+	.hidden {
+		visibility: hidden;
 	}
 </style>

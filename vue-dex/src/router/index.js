@@ -10,13 +10,19 @@ export default new Router({
 			path: '/',
 			name: 'Home',
 			component: DexList,
-			props: { default: true, favorites: false }
+			props: { favorites: false, filter: '' }
 		},
 		{
 			path: '/shiny',
 			name: 'Shiny',
 			component: DexList,
-			props: { default: true, favorites: true }
+			props: { favorites: true, filter: '' }
+		},
+		{
+			path: '/search',
+			name: 'Search',
+			component: DexList,
+			props: (route) => ({ filter: route.query.q, favorites: false })
 		},
 	]
 })
