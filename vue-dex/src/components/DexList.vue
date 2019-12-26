@@ -1,11 +1,11 @@
 <template>
 
 	<div class="dex-list">
-    <div v-if="this.filterTrimmed.length > 0" class="dex-list-list">
+    <div v-if="this.filterTrimmed.length > 0" class="dex-list-header">
       <button v-on:click="back()"> Back </button>
       <h1> Search for {{ this.filterTrimmed }} </h1>
     </div>
-    
+
     <div class="dex-list-list">
       <div v-for="object in objects" :key="object.index">
         <dex-block :object="object" />
@@ -40,7 +40,7 @@ import DexBlock from '@/components/DexBlock.vue'
 
     methods: {
       back() {
-        this.$router.go(-1)
+        this.$router.push({name: 'Home'})
       }
     }
   }
@@ -52,15 +52,19 @@ import DexBlock from '@/components/DexBlock.vue'
     width: 5em;
   }
 
-  .dex-list-list {
+  .dex-list-header {
+    margin: 50px;
+    display: grid;
+    grid-template-columns: 1fr 9fr;
     font-family: Verdana;
+    text-align: center;
   }
   
   .dex-list-list {
     display: grid;
     grid-gap: 30px;
     grid-row-gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+    grid-template-columns: repeat(auto-fill, minmax(200px, auto));
     padding: 50px;
   }
 
