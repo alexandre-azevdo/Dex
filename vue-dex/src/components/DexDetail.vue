@@ -19,8 +19,8 @@
 		</div>
 		<p>Height: {{detail.height}}</p>
 		<p>Weight: {{detail.weight}}</p>
-		<p> {{ detail.dex["en"] }} </p>
-		<p> {{ detail.dex["ja"] }} </p>
+		<p class="dex-detail-description"> {{ detail.dex["en"] }} </p>
+		<p class="dex-detail-description"> {{ detail.dex["ja"] }} </p>
 	</div>
 
 </template>
@@ -87,19 +87,26 @@
 
 	.detail-type {
 		margin: 2em;
-		padding: 2em;
+		padding: 1em;
 		background-color: rgba(0, 0, 0, 0.3);
 	}
 	
 	#dex-detail {
+		word-break: break-all;
+		text-align: center;
 		position: sticky;
 		top: 0;
 		padding: 2em;
 		font-family: Verdana;
 	}
 
+	.dex-detail-description {
+		word-break: normal;
+	}
+
 	#dex-detail img {
-		margin: 5em;
+		margin: 0 auto;
+		margin-top: 5em;
 		background-color: white;
 		border: 5px solid;
 		border-color: rgba(0, 0, 0, 0.3);

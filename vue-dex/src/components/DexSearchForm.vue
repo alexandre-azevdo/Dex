@@ -31,6 +31,7 @@
 <style scoped>
 
   #dex-search-form {
+    min-width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;

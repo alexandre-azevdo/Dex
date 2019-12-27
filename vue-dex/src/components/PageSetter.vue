@@ -5,6 +5,8 @@
 			&lt;&lt; Previous
 		</button>
 
+		<p> Page {{this.page+1}} of {{this.maxPage}} </p>
+
 		<button 
 			:class="[hasNext ? '': 'hidden']"
 			v-on:click="nextPage()">
@@ -26,11 +28,15 @@
 			},
 
 			hasNext() {
-				return this.page < API.fetchData.data.length
+				return this.page < this.maxPage
 			},
 
 			hasPrevious() {
 				return this.page > 0
+			},
+
+			maxPage() {
+				return API.fetchData.data.length
 			}
 		},
 
@@ -47,6 +53,10 @@
 </script>
 
 <style scoped>
+
+	p {
+		font-family: Verdana;
+	}
 
 	.page-setter {
 		display: flex;

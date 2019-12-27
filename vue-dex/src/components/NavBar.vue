@@ -42,19 +42,20 @@
 
 <style scoped>
 	.nav-link span {
-    display: block;
-    margin: 0;
-    text-decoration: none;
-    font-family: Verdana;
-    font-size: 1em;
-    color: black;
-  }
+		display: block;
+		margin: 0;
+		text-decoration: none;
+		font-family: Verdana;
+		font-size: 1em;
+		color: black;
+	}
 
   .nav-link:hover a {
     color: white;
   }
 
   .nav-link {
+	min-width: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
